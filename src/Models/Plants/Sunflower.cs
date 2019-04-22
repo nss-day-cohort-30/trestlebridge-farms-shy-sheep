@@ -2,7 +2,7 @@ using System;
 using Trestlebridge.Interfaces;
 namespace src.Models.Plants
 {
-    public class Sunflower : IResource, ISeedProducing
+    public class Sunflower : INatural, IPlow, ISeed
     {
         private int _seedsProduced = 650;
         public string Type { get; } = "Sunflower";

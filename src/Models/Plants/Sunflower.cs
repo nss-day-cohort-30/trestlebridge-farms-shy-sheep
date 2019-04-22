@@ -4,11 +4,11 @@ namespace src.Models.Plants
 {
     public class Sunflower : INatural, IPlow, ISeed
     {
-        private int _seedsProduced = 650;
+        private double _CompostProduced = 21.6;
         public string Type { get; } = "Sunflower";
 
         public double Harvest () {
-            return _seedsProduced;
+            return _CompostProduced;
         }
 
         public override string ToString () {

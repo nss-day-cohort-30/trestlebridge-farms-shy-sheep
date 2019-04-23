@@ -7,6 +7,7 @@ using Trestlebridge.Models.Animals;
 namespace Trestlebridge.Actions {
     public class ChooseGrazingField {
         public static bool UserTriedToSelectAFullFacility = false;
+
         public static void CollectInput (Farm farm, IGrazing animal) {
             Console.Clear();
 

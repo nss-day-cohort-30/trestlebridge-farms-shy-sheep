@@ -4,13 +4,19 @@ using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Plants
 {
-    public class Sunflower //: INatural, IPlow, ISeed
+    public class Sunflower : ICompostProducing, ISeedProducing
     {
-        private double _CompostProduced = 21.6;
+        private double _compostProduced = 21.6;
+        private int _seedsProduced = 650;
         public string Type { get; } = "Sunflower";
 
-        public double Harvest () {
-            return _CompostProduced;
+        public double CollectCompost () {
+            return _compostProduced;
+        }
+
+        public double Harvest()
+        {
+            return _seedsProduced;
         }
 
         public override string ToString () {

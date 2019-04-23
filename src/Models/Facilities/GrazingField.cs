@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
-
+using Trestlebridge.Actions;
 
 namespace Trestlebridge.Models.Facilities {
     public class GrazingField : IFacility<IGrazing>
@@ -18,21 +18,30 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public void AddResource (IGrazing animal)
+        public void AddResource (Farm farm, IGrazing animal)
         {
-            if (_animals.Count >= _capacity) {
-                Console.WriteLine("sorry too full");
-            }else{
+            if (_animals.Count < _capacity) {
                 _animals.Add(animal);
+                ChooseGrazingField.UserTriedToSelectAFullFacility = false;
+            }
+            else
+            {
+                ChooseGrazingField.UserTriedToSelectAFullFacility = true;
+                ChooseGrazingField.CollectInput(farm, animal);
             }
         }
 
-        public void AddResource (List<IGrazing> animals)  // TODO: Take out this method for boilerplate
+        public void AddResource(IGrazing resource)
         {
-            if (_animals.Count + animals.Count <= _capacity) {
-                _animals.AddRange(animals);
-            }
+            throw new NotImplementedException();
         }
+
+        // public void AddResource (List<IGrazing> animals)  // TODO: Take out this method for boilerplate
+        // {
+        //     if (_animals.Count + animals.Count <= _capacity) {
+        //         _animals.AddRange(animals);
+        //     }
+        // }
 
         public override string ToString()
         {

@@ -6,6 +6,7 @@ using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Actions {
     public class ChooseGrazingField {
+        public static bool UserTriedToSelectAFullFacility = false;
         public static void CollectInput (Farm farm, IGrazing animal) {
             Console.Clear();
 
@@ -17,12 +18,16 @@ namespace Trestlebridge.Actions {
             Console.WriteLine ();
 
             // How can I output the type of animal chosen here?
+            if (UserTriedToSelectAFullFacility)
+            {
+                Console.WriteLine("That facility is already full.");
+            }
             Console.WriteLine ($"Place the animal where?");
 
             Console.Write ("> ");
             int choice = Int32.Parse(Console.ReadLine ()) - 1;
 
-            farm.GrazingFields[choice].AddResource(animal);
+            farm.GrazingFields[choice].AddResource(farm, animal);
 
             /*
                 Couldn't get this to work. Can you?

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 
 namespace Trestlebridge.Interfaces
@@ -7,7 +8,7 @@ namespace Trestlebridge.Interfaces
     {
         double Capacity { get; }
 
-        void AddResource (T resource);
-        void AddResource (List<T> resources);
+        void AddResource (Farm farm, T resource);
+        // void AddResource (List<T> resources);
     }
 }

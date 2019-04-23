@@ -1,6 +1,7 @@
 using System;
 using Trestlebridge.Interfaces;
-namespace src.Models.Plants
+using System.Collections.Generic;
+namespace Trestlebridge.Models.Plants
 {
     public class Wildflower //: ICompost, INatural, IResource
     {

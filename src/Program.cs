@@ -20,6 +20,8 @@ namespace Trestlebridge
             Console.WriteLine();
         }
 
+        static bool InputWasInvalid = false;
+
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.White;
@@ -37,6 +39,10 @@ namespace Trestlebridge
                 Console.WriteLine("5. Exit");
                 Console.WriteLine();
 
+                if (InputWasInvalid)
+                {
+                    Console.WriteLine("Input was invalid, please try again.");
+                }
                 Console.WriteLine("Choose a FARMS option");
                 Console.Write("> ");
                 string option = Console.ReadLine();
@@ -44,11 +50,13 @@ namespace Trestlebridge
                 if (option == "1")
                 {
                     DisplayBanner();
+                    InputWasInvalid = false;
                     CreateFacility.CollectInput(Trestlebridge);
                 }
                 else if (option == "2")
                 {
                     DisplayBanner();
+                    InputWasInvalid = false;
                     PurchaseStock.CollectInput(Trestlebridge);
                 }
                   else if (option == "3")
@@ -59,6 +67,7 @@ namespace Trestlebridge
                 else if (option == "4")
                 {
                     DisplayBanner();
+                    InputWasInvalid = false;
                     Console.WriteLine(Trestlebridge);
                     Console.WriteLine("\n\n\n");
                     Console.WriteLine("Press return key to go back to main menu.");
@@ -71,7 +80,7 @@ namespace Trestlebridge
                 }
                 else
                 {
-                    Console.WriteLine($"Invalid option: {option}");
+                    InputWasInvalid = true;
                 }
             }
         }

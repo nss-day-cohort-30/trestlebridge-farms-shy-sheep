@@ -9,6 +9,7 @@ namespace Trestlebridge.Models
     public class Farm
     {
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
+        public List<ChickenHouse> ChickenFeeds { get; } = new List<ChickenHouse>();
 
         /*
             This method must specify the correct product interface of the
@@ -26,11 +27,11 @@ namespace Trestlebridge.Models
                     GrazingFields[index].AddResource((IGrazing)resource);
                     break;
                 case "Chicken":
-                    GrazingFields[index].AddResource((IGrazing)resource);
+                    ChickenFeeds[index].AddResource((IChicken)resource);
                     break;
-                case "Duck":
-                    GrazingFields[index].AddResource((IGrazing)resource);
-                    break;
+                // case "Duck":
+                //     DuckHouse[index].AddResource((IDuck)resource);
+                //     break;
                 case "Goat":
                     GrazingFields[index].AddResource((IGrazing)resource);
                     break;

@@ -32,14 +32,5 @@ namespace Trestlebridge.Actions {
 
         }
 
-        internal static void CollectInput(Farm farm, Chicken chicken)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static void CollectInput(Farm farm, Duck duck)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

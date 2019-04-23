@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
-
+using Trestlebridge.Actions;
 
 namespace Trestlebridge.Models.Facilities {
     public class NaturalField : IFacility<ICompostProducing>
@@ -15,6 +15,12 @@ namespace Trestlebridge.Models.Facilities {
         public double Capacity {
             get {
                 return _capacity;
+            }
+        }
+
+        public double CurrentCapacity {
+            get {
+                return _plants.Count;
             }
         }
 
@@ -36,7 +42,7 @@ namespace Trestlebridge.Models.Facilities {
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
-            output.Append($"Natural field {shortId} has {this._plants.Count} plants\n");
+            output.Append($"Natural field {shortId} has {this._plants.Count} of {this._capacity} rows of plants.\n");
             this._plants.ForEach(p => output.Append($"   {p}\n"));
 
             return output.ToString();

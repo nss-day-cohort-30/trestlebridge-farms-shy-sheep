@@ -18,6 +18,12 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        public double CurrentCapacity {
+            get {
+                return _animals.Count;
+            }
+        }
+
         public void AddResource (Farm farm, IGrazing animal)
         {
             if (_animals.Count < _capacity) {
@@ -48,7 +54,7 @@ namespace Trestlebridge.Models.Facilities {
             StringBuilder output = new StringBuilder();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
-            output.Append($"Grazing field {shortId} has {this._animals.Count} animals\n");
+            output.Append($"Grazing field {shortId} has {this._animals.Count} of {this._capacity} animals.\n");
             this._animals.ForEach(a => output.Append($"   {a}\n"));
 
             return output.ToString();

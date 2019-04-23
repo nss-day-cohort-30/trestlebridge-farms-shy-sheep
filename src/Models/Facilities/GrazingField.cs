@@ -21,7 +21,7 @@ namespace Trestlebridge.Models.Facilities {
         public void AddResource (IGrazing animal)
         {
             if (_animals.Count >= _capacity) {
-                Console.WriteLine("sorry a too full");
+                Console.WriteLine("sorry too full");
             }else{
                 _animals.Add(animal);
             }

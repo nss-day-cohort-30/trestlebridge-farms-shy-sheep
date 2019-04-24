@@ -8,7 +8,7 @@ namespace Trestlebridge
 {
     class Program
     {
-        static void DisplayBanner ()
+        public static void DisplayBanner ()
         {
             Console.Clear();
             Console.WriteLine();

@@ -7,23 +7,30 @@ using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions {
     public class ChooseChickenHouse {
-        public static void CollectInput (Farm ChickenHouse, IChicken chicken) {
+        public static bool UserTriedToSelectAFullFacility = false;
+
+        public static void CollectInput (Farm farm, Chicken chicken) {
             Console.Clear();
 
-            for (int i = 0; i < ChickenHouse.GetChickenFeeds().Count; i++)
+            for (int i = 0; i < farm.ChickenHouses.Count; i++)
             {
-                Console.WriteLine ($"{i + 1}. Chicken House");
+                ChickenHouse currentHouse = farm.ChickenHouses[i];
+                Console.WriteLine ($"{i + 1}. {currentHouse}");
             }
 
             Console.WriteLine ();
 
-            // How can I output the type of Chicken chosen here?
+            // How can I output the type of plant chosen here?
+            if (UserTriedToSelectAFullFacility)
+            {
+                Console.WriteLine("That facility is already full.");
+            }
             Console.WriteLine ($"Place the Chicken where?");
 
             Console.Write ("> ");
             int choice = Int32.Parse(Console.ReadLine ()) - 1;
 
-            ChickenHouse.GetChickenFeeds()[choice].AddResource(chicken);
+            farm.ChickenHouses[choice].AddResource(farm, chicken);
 
             /*
                 Couldn't get this to work. Can you?
@@ -31,11 +38,6 @@ namespace Trestlebridge.Actions {
              */
             // farm.PurchaseResource<IGrazing>(animal, choice);
 
-        }
-
-        internal static void CollectInput(Farm farm, Chicken chicken)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using Trestlebridge.Actions;
 using Trestlebridge.Models;
+using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge
 {

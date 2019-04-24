@@ -9,7 +9,7 @@ namespace Trestlebridge.Models.Facilities
     public class Farm
     {
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
-        public List<ChickenHouse> ChickenFeeds { get; } = new List<ChickenHouse>();
+        public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
         public List<NaturalField> NaturalFields { get; } = new List<NaturalField>();
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
 
@@ -29,7 +29,7 @@ namespace Trestlebridge.Models.Facilities
                     GrazingFields[index].AddResource((IGrazing)resource);
                     break;
                 case "Chicken":
-                    ChickenFeeds[index].AddResource((IChicken)resource);
+                    ChickenHouses[index].AddResource((Chicken)resource);
                     break;
                 // case "Duck":
                 //     DuckHouse[index].AddResource((IDuck)resource);
@@ -47,6 +47,12 @@ namespace Trestlebridge.Models.Facilities
                     break;
             }
         }
+
+        internal object GetChickenFeeds()
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddGrazingField (GrazingField field)
         {
             GrazingFields.Add(field);

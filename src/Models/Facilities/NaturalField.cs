@@ -37,6 +37,16 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        public void AddResource(ICompostProducing resource)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddResource(List<ICompostProducing> resources)
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();

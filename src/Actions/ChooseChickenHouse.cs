@@ -5,32 +5,46 @@ using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 using Trestlebridge.Models.Facilities;
 
-namespace Trestlebridge.Actions {
-    public class ChooseChickenHouse {
+namespace Trestlebridge.Actions
+{
+    public class ChooseChickenHouse
+    {
         public static bool UserTriedToSelectAFullFacility = false;
-
-        public static void CollectInput (Farm farm, Chicken chicken) {
+        public static void CollectInput(Farm farm, Chicken chicken)
+        {
             Console.Clear();
 
-            for (int i = 0; i < farm.ChickenHouses.Count; i++)
+            ChickenHouse anyHouseWithRoom = farm.ChickenHouses.Find(ch => ch.CurrentCapacity < ch.MaxCapacity);
+
+            if (anyHouseWithRoom != null)
             {
-                ChickenHouse currentHouse = farm.ChickenHouses[i];
-                Console.WriteLine ($"{i + 1}. {currentHouse}");
+
+                for (int i = 0; i < farm.ChickenHouses.Count; i++)
+                {
+                    ChickenHouse currentHouse = farm.ChickenHouses[i];
+                    Console.WriteLine($"{i + 1}. {currentHouse}");
+                }
+
+                Console.WriteLine();
+
+                // How can I output the type of plant chosen here?
+                if (UserTriedToSelectAFullFacility)
+                {
+                    Console.WriteLine("That facility is already full.");
+                }
+                Console.WriteLine($"Place the Chicken where?");
+
+                Console.Write("> ");
+                int choice = Int32.Parse(Console.ReadLine()) - 1;
+
+                farm.ChickenHouses[choice].AddResource(farm, chicken);
             }
-
-            Console.WriteLine ();
-
-            // How can I output the type of plant chosen here?
-            if (UserTriedToSelectAFullFacility)
+            else
             {
-                Console.WriteLine("That facility is already full.");
+                PurchaseStock.ThereIsNoRoomForTheAnimalBeingPurchased = true;
+                Program.DisplayBanner();
+                PurchaseStock.CollectInput(farm);
             }
-            Console.WriteLine ($"Place the Chicken where?");
-
-            Console.Write ("> ");
-            int choice = Int32.Parse(Console.ReadLine ()) - 1;
-
-            farm.ChickenHouses[choice].AddResource(farm, chicken);
 
             /*
                 Couldn't get this to work. Can you?

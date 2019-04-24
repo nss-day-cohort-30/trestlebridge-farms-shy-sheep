@@ -8,6 +8,7 @@ namespace Trestlebridge.Actions {
     public class PurchaseStock {
         private const int V = 2;
 
+        public static bool ThereIsNoRoomForTheAnimalBeingPurchased = false;
         public static void CollectInput (Farm farm) {
             Console.WriteLine ("1. Cow");
             Console.WriteLine ("2. Ostrich");
@@ -16,9 +17,15 @@ namespace Trestlebridge.Actions {
             Console.WriteLine ("5. Pig");
             Console.WriteLine ("6. Sheep");
             Console.WriteLine ("7. Chicken");
+            Console.WriteLine ("8. Go Back To Main Menu");
 
 
             Console.WriteLine ();
+            if (ThereIsNoRoomForTheAnimalBeingPurchased)
+            {
+                Console.WriteLine("Sorry, but you don't have anywhere to put that animal. Please make a different selection.");
+            }
+
             Console.WriteLine ("What are you buying today?");
 
             Console.Write ("> ");
@@ -46,6 +53,8 @@ namespace Trestlebridge.Actions {
                     break;
                 case 7:
                     ChooseChickenHouse.CollectInput(farm, new Chicken());
+                    break;
+                case 8:
                     break;
                 default:
                     break;

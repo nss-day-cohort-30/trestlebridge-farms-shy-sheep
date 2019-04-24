@@ -12,6 +12,7 @@ namespace Trestlebridge.Models
         public List<NaturalField> NaturalFields { get; } = new List<NaturalField>();
         public List<PlowedField> PlowedFields { get; } = new List<PlowedField>();
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
+        
         // public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
 
         /*

@@ -7,9 +7,9 @@ namespace Trestlebridge.Interfaces
 {
     public interface IFacility<T>
     {
-        double Capacity { get; }
+        double MaxCapacity { get; }
+        double CurrentCapacity { get; }
 
-        void AddResource (Farm farm, T resource);
-        // void AddResource (List<T> resources);
+        void AddResource(Farm farm, T resource);
     }
 }

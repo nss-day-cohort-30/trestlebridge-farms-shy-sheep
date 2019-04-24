@@ -13,9 +13,16 @@ namespace Trestlebridge.Models.Facilities {
 
         private List<Duck> _animals = new List<Duck>();
 
-        public double Capacity {
+        public double MaxCapacity {
             get {
                 return _capacity;
+            }
+        }
+
+        public double CurrentCapacity
+        {
+            get {
+                return _animals.Count;
             }
         }
 

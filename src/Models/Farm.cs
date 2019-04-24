@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Models.Animals;
 using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Models.Facilities

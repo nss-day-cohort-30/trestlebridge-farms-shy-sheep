@@ -13,12 +13,17 @@ namespace Trestlebridge.Models.Facilities {
 
         private List<Chicken> _animals = new List<Chicken>();
 
-        public double Capacity {
+        public double MaxCapacity {
             get {
                 return _capacity;
             }
         }
 
+        public double CurrentCapacity {
+            get {
+                return _animals.Count;
+            }
+        }
         public void AddResource (Farm farm, Chicken animal)
         {
             if (_animals.Count < _capacity) {

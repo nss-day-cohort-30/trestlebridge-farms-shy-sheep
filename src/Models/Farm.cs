@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Trestlebridge.Interfaces;
+using Trestlebridge.Models.Animals;
 using Trestlebridge.Models.Facilities;
 
-namespace Trestlebridge.Models
+namespace Trestlebridge.Models.Facilities
 {
     public class Farm
     {
         public List<GrazingField> GrazingFields { get; } = new List<GrazingField>();
+        public List<ChickenHouse> ChickenHouses { get; } = new List<ChickenHouse>();
         public List<NaturalField> NaturalFields { get; } = new List<NaturalField>();
         public List<PlowedField> PlowedFields { get; } = new List<PlowedField>();
         public List<DuckHouse> DuckHouses { get; } = new List<DuckHouse>();
@@ -27,10 +29,33 @@ namespace Trestlebridge.Models
                 case "Cow":
                     GrazingFields[index].AddResource((IGrazing)resource);
                     break;
+                case "Ostrich":
+                    GrazingFields[index].AddResource((IGrazing)resource);
+                    break;
+                case "Chicken":
+                    ChickenHouses[index].AddResource((Chicken)resource);
+                    break;
+                // case "Duck":
+                //     DuckHouse[index].AddResource((IDuck)resource);
+                //     break;
+                case "Goat":
+                    GrazingFields[index].AddResource((IGrazing)resource);
+                    break;
+                case "Pigs":
+                    GrazingFields[index].AddResource((IGrazing)resource);
+                    break;
+                case "Sheep":
+                    GrazingFields[index].AddResource((IGrazing)resource);
+                    break;
                 default:
                     break;
             }
         }
+
+        // internal object GetChickenFeeds()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         public void AddGrazingField (GrazingField field)
         {
@@ -53,10 +78,10 @@ namespace Trestlebridge.Models
         }
 
 
-        // public void AddChickenHouse(ChickenHouse house) {
+        public void AddChickenHouse(ChickenHouse house) {
 
-        //     ChickenHouses.Add(house);
-        // }
+            ChickenHouses.Add(house);
+        }
 
 
         public override string ToString()
@@ -66,10 +91,12 @@ namespace Trestlebridge.Models
             GrazingFields.ForEach(gf => report.Append(gf));
             NaturalFields.ForEach(nf => report.Append(nf));
             PlowedFields.ForEach(pf => report.Append(pf));
-            // ChickenHouses.ForEach(ch => report.Append(ch));
+            ChickenHouses.ForEach(ch => report.Append(ch));
             DuckHouses.ForEach(dh => report.Append(dh));
 
             return report.ToString();
         }
     }
+
+
 }

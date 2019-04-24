@@ -39,6 +39,16 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
+        public void AddResource(Duck resource)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddResource(List<Duck> resources)
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();

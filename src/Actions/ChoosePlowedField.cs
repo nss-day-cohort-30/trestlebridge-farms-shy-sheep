@@ -15,7 +15,7 @@ namespace Trestlebridge.Actions {
             for (int i = 0; i < farm.PlowedFields.Count; i++)
             {
                 PlowedField currentField = farm.PlowedFields[i];
-                Console.WriteLine ($"{i + 1}. Plowed field - {currentField.CurrentCapacity} of {currentField.Capacity} rows of plants\n");
+                Console.WriteLine ($"{i + 1}. Plowed field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
             }
 
             Console.WriteLine ();

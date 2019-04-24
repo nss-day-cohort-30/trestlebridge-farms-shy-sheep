@@ -9,7 +9,8 @@ namespace Trestlebridge.Actions {
     public class ChoosePlowedField {
         public static bool UserTriedToSelectAFullFacility = false;
 
-        public static void CollectInput (Farm farm, ISeedProducing plant) {
+
+        public static void CollectInput (Farm farm, string seedChoice, int amountChoice) {
             Console.Clear();
 
             for (int i = 0; i < farm.PlowedFields.Count; i++)

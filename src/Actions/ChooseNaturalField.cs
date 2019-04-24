@@ -9,6 +9,11 @@ namespace Trestlebridge.Actions {
     public class ChooseNaturalField {
         public static bool UserTriedToSelectAFullFacility = false;
 
+
+
+        public static void CollectInput(Farm farm, string seedChoice, int amountChoice) {
+            
+        }
         public static void CollectInput (Farm farm, ICompostProducing plant) {
             Console.Clear();
 

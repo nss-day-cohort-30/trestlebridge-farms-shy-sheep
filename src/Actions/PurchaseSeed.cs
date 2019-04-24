@@ -10,31 +10,55 @@ namespace Trestlebridge.Actions
     {
         public static void CollectInput(Farm farm)
         {
-            Console.WriteLine("1. Sesame");
-            Console.WriteLine("2. Sunflower");
-            Console.WriteLine("3. Wildflower");
+            Console.WriteLine(" 1. Sesame");
+            Console.WriteLine(" 2. Sunflower");
+            Console.WriteLine(" 3. Wildflower");
 
             Console.WriteLine();
-            Console.WriteLine("Choose seed to purchase");
+            Console.WriteLine("  Choose seed to purchase");
 
             Console.Write("> ");
-            string choice = Console.ReadLine();
+            string seedChoice = Console.ReadLine();
 
-
-            switch (Int32.Parse(choice))
+            if (seedChoice == "1")
             {
-                case 1:
-                    ChooseSeedAmount.CollectInput(farm, new Sesame());
-                    break;
-                case 2: 
-                    ChooseSeedAmount.CollectInput(farm, new Sunflower());
-                    break;
-                case 3: 
-                    ChooseSeedAmount.CollectInput(farm, new Wildflower());
-                break;
-                default:
-                    break;
+
+                seedChoice = "Sesame";
+
             }
+
+            if (seedChoice == "2")
+            {
+
+                seedChoice = "Sunflower";
+
+            }
+
+            if (seedChoice == "3")
+            {
+
+                seedChoice = "Wildflower";
+
+            }
+
+            Console.WriteLine($"  How many {seedChoice} would you like to plant?");
+
+            int amountChoice = Int32.Parse(Console.ReadLine());
+
+            if (seedChoice == "Sesame")
+            {
+                ChoosePlowedField.CollectInput(farm, seedChoice, amountChoice);
+            }
+            // if (seedChoice == "Sunflower")
+            // {
+            //     ChoosePlowedOrNaturalField.CollectInput(farm, seedChoice, amountChoice);
+            // }
+            if (seedChoice == "Wildflower")
+            {
+                ChooseNaturalField.CollectInput(farm, seedChoice, amountChoice);
+            }
+
+
         }
     }
 }

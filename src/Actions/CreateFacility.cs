@@ -30,8 +30,8 @@ namespace Trestlebridge.Actions {
                     break;
                 case 4: farm.AddDuckHouse(new DuckHouse());
                     break;
-                // case 5: farm.AddChickenHouse(new ChickenHouse());
-                //     break;
+                case 5: farm.AddChickenHouse(new ChickenHouse());
+                    break;
                 default:
                     break;
             }

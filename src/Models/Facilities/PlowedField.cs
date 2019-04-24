@@ -12,7 +12,7 @@ namespace Trestlebridge.Models.Facilities {
 
         private List<ISeedProducing> _plants = new List<ISeedProducing>();
 
-        public double Capacity {
+        public double MaxCapacity {
             get {
                 return _capacity;
             }

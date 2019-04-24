@@ -52,10 +52,10 @@ namespace Trestlebridge.Models.Facilities
             }
         }
 
-        internal object GetChickenFeeds()
-        {
-            throw new NotImplementedException();
-        }
+        // internal object GetChickenFeeds()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         public void AddGrazingField (GrazingField field)
         {
@@ -78,10 +78,10 @@ namespace Trestlebridge.Models.Facilities
         }
 
 
-        // public void AddChickenHouse(ChickenHouse house) {
+        public void AddChickenHouse(ChickenHouse house) {
 
-        //     ChickenHouses.Add(house);
-        // }
+            ChickenHouses.Add(house);
+        }
 
 
         public override string ToString()
@@ -91,7 +91,7 @@ namespace Trestlebridge.Models.Facilities
             GrazingFields.ForEach(gf => report.Append(gf));
             NaturalFields.ForEach(nf => report.Append(nf));
             PlowedFields.ForEach(pf => report.Append(pf));
-            // ChickenHouses.ForEach(ch => report.Append(ch));
+            ChickenHouses.ForEach(ch => report.Append(ch));
             DuckHouses.ForEach(dh => report.Append(dh));
 
             return report.ToString();

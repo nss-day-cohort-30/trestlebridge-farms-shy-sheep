@@ -6,14 +6,17 @@ using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions {
     public class PurchaseStock {
+        private const int V = 2;
+
         public static void CollectInput (Farm farm) {
             Console.WriteLine ("1. Cow");
             Console.WriteLine ("2. Ostrich");
-            Console.WriteLine ("3. Chicken");
-            Console.WriteLine ("4. Duck");
-            Console.WriteLine ("5. Goat");
-            Console.WriteLine ("6. Pigs");
-            Console.WriteLine ("7. Sheep");
+            Console.WriteLine ("3. Duck");
+            Console.WriteLine ("4. Goat");
+            Console.WriteLine ("5. Pig");
+            Console.WriteLine ("6. Sheep");
+            Console.WriteLine ("7. Chicken");
+
 
             Console.WriteLine ();
             Console.WriteLine ("What are you buying today?");

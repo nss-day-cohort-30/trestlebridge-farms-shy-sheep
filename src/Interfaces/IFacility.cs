@@ -11,5 +11,6 @@ namespace Trestlebridge.Interfaces
         double CurrentCapacity { get; }
 
         void AddResource(Farm farm, T resource); 
+        void AddResource(Farm farm, List<T> resource);
     }
 }

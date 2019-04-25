@@ -5,7 +5,8 @@ using Trestlebridge.Interfaces;
 using Trestlebridge.Actions;
 using Trestlebridge.Models.Animals;
 
-namespace Trestlebridge.Models.Facilities {
+namespace Trestlebridge.Models.Facilities
+{
     public class DuckHouse : IFacility<Duck>
     {
         private int _capacity = 12;
@@ -13,22 +14,26 @@ namespace Trestlebridge.Models.Facilities {
 
         private List<Duck> _animals = new List<Duck>();
 
-        public double MaxCapacity {
-            get {
+        public double MaxCapacity
+        {
+            get
+            {
                 return _capacity;
             }
         }
 
         public double CurrentCapacity
         {
-            get {
+            get
+            {
                 return _animals.Count;
             }
         }
 
-        public void AddResource (Farm farm, Duck animal)
+        public void AddResource(Farm farm, Duck animal)
         {
-            if (_animals.Count < _capacity) {
+            if (_animals.Count < _capacity)
+            {
                 _animals.Add(animal);
                 ChooseDuckHouse.UserTriedToSelectAFullFacility = false;
             }
@@ -39,14 +44,9 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public void AddResource(Duck resource)
+        public void AddResource(Farm farm, List<Duck> animals)
         {
-            throw new NotImplementedException();
-        }
 
-        public void AddResource(List<Duck> resources)
-        {
-            throw new NotImplementedException();
         }
 
         public override string ToString()

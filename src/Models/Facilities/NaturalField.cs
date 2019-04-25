@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Actions;
 
-namespace Trestlebridge.Models.Facilities {
+namespace Trestlebridge.Models.Facilities
+{
     public class NaturalField : IFacility<ICompostProducing>
     {
         private int _capacity = 10;
@@ -12,39 +13,29 @@ namespace Trestlebridge.Models.Facilities {
 
         private List<ICompostProducing> _plants = new List<ICompostProducing>();
 
-        public double MaxCapacity {
-            get {
+        public double MaxCapacity
+        {
+            get
+            {
                 return _capacity;
             }
         }
 
-        public double CurrentCapacity {
-            get {
+        public double CurrentCapacity
+        {
+            get
+            {
                 return _plants.Count;
             }
         }
 
-        public void AddResource (Farm farm, ICompostProducing plant)
+        public void AddResource(Farm farm, List<ICompostProducing> plants)
         {
-            if (_plants.Count < _capacity) {
-                _plants.Add(plant);
-                ChooseNaturalField.UserTriedToSelectAFullFacility = true;
-            }
-            else
-            {
-                ChooseNaturalField.UserTriedToSelectAFullFacility = false;
-                ChooseNaturalField.CollectInput(farm, plant);
-            }
+            _plants.AddRange(plants);
         }
-
-        public void AddResource(ICompostProducing resource)
+        public void AddResource(Farm farm, ICompostProducing plant)
         {
-            throw new NotImplementedException();
-        }
-
-        public void AddResource(List<ICompostProducing> resources)
-        {
-            throw new NotImplementedException();
+            //refactor IFacility into two separate interfaces for animal facilities and plant facilities so we can get rid of this
         }
 
         public override string ToString()

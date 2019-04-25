@@ -30,36 +30,13 @@ namespace Trestlebridge.Models.Facilities
             }
         }
 
-        public void AddResource(Farm farm, string seedChoice, int amountChoice)
-        {
-            int emptySpace = _capacity - _plants.Count;
-            if (emptySpace >= amountChoice)
-            {
-
-                if (seedChoice == "Sesame")
-                {
-                    for (int i = 0; i < amountChoice; i++)
-                    {
-                        _plants.Add(new Sesame());
-                    }
-                }
-
-                else if (seedChoice == "Sunflower")
-                {
-
-                    for (int i = 0; i < amountChoice; i++)
-                    {
-                        _plants.Add(new Sunflower());
-                    }
-                }
-
-            }
-            else
-            {
-                ChoosePlowedField.UserTriedToSelectAFullFacility = true;
-                ChoosePlowedField.CollectInput(farm, seedChoice, amountChoice);
-            }
+        public void AddResource(Farm farm, List<ISeedProducing> plants) {
+            _plants.AddRange(plants);
         }
+        public void AddResource(Farm farm, ISeedProducing plant) {
+                //refactor IFacility into two separate interfaces for animal facilities and plant facilities so we can get rid of this
+        } 
+
 
         public override string ToString()
         {

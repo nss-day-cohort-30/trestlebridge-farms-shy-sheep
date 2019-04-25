@@ -55,10 +55,10 @@ namespace Trestlebridge.Actions
             {
                 ChoosePlowedField.CollectInput(farm, seedChoice, amountChoice);
             }
-            // if (seedChoice == "Sunflower")
-            // {
-            //     ChoosePlowedOrNaturalField.CollectInput(farm, seedChoice, amountChoice);
-            // }
+            if (seedChoice == "Sunflower")
+            {
+                ChooseSunflowerField.CollectInput(farm, seedChoice, amountChoice);
+            }
             if (seedChoice == "Wildflower")
             {
                 ChooseNaturalField.CollectInput(farm, seedChoice, amountChoice);

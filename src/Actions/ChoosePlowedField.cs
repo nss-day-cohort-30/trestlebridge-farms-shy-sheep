@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
 using Trestlebridge.Models.Facilities;
+using Trestlebridge.Models.Plants;
 
 namespace Trestlebridge.Actions
 {
@@ -16,7 +18,7 @@ namespace Trestlebridge.Actions
         {
             Console.Clear();
 
-            PlowedField anyFieldWithRoom = farm.PlowedFields.Find(pf => pf.CurrentCapacity < pf.MaxCapacity);
+            PlowedField anyFieldWithRoom = farm.PlowedFields.Find(pf => (pf.MaxCapacity - pf.CurrentCapacity) >= amountChoice);
 
             if (anyFieldWithRoom != null)
             {
@@ -38,15 +40,28 @@ namespace Trestlebridge.Actions
                 Console.Write("> ");
                 int choice = Int32.Parse(Console.ReadLine()) - 1;
 
-                farm.PlowedFields[choice].AddResource(farm, plant);
+                //user is buying multiple seeds so we need a list holding however many they want, then adding the list of resources to field which is on the farm
+
+                List<ISeedProducing> plants = new List<ISeedProducing>();
+
+                //determine which type of plant they want and then with for loop adding the appropriate amount(amountChoice parameter) to list of plants
+            
+                    for (int i = 0; i < amountChoice; i++)
+                    {
+                        plants.Add(new Sesame());
+                    }
+               
+
+                //now we're adding the list of plants to the specific field that the user chose from the menu
+                farm.PlowedFields[choice].AddResource(farm, plants);
 
                 /*
                     Couldn't get this to work. Can you?
                     Stretch goal. Only if the app is fully functional.
                  */
                 // farm.PurchaseResource<IGrazing>(animal, choice);
-            }
-              else
+            } //else if there isn't room for all the plants the user is trying to add, this else statement notifies user and takes to previous menu
+            else
             {
                 PurchaseSeed.ThereIsNoRoomForTheSeedBeingPurchased = true;
                 Program.DisplayBanner();

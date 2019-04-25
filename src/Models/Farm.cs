@@ -22,29 +22,30 @@ namespace Trestlebridge.Models.Facilities
          */
         public void PurchaseResource<T> (IResource resource, int index)
         {
+           Farm farm = this;
             Console.WriteLine(typeof(T).ToString());
             switch (typeof(T).ToString())
             {
                 case "Cow":
-                    GrazingFields[index].AddResource((IGrazing)resource);
+                    GrazingFields[index].AddResource(farm, (IGrazing)resource);
                     break;
                 case "Ostrich":
-                    GrazingFields[index].AddResource((IGrazing)resource);
+                    GrazingFields[index].AddResource(farm, (IGrazing)resource);
                     break;
                 case "Chicken":
-                    ChickenHouses[index].AddResource((Chicken)resource);
+                    ChickenHouses[index].AddResource(farm, (Chicken)resource);
                     break;
-                // case "Duck":
-                //     DuckHouse[index].AddResource((IDuck)resource);
-                //     break;
+                case "Duck":
+                    DuckHouses[index].AddResource(farm, (Duck)resource);
+                    break;
                 case "Goat":
-                    GrazingFields[index].AddResource((IGrazing)resource);
+                    GrazingFields[index].AddResource(farm, (IGrazing)resource);
                     break;
                 case "Pigs":
-                    GrazingFields[index].AddResource((IGrazing)resource);
+                    GrazingFields[index].AddResource(farm, (IGrazing)resource);
                     break;
                 case "Sheep":
-                    GrazingFields[index].AddResource((IGrazing)resource);
+                    GrazingFields[index].AddResource(farm, (IGrazing)resource);
                     break;
                 default:
                     break;

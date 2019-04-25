@@ -87,7 +87,18 @@ namespace Trestlebridge.Actions
 
                     //now we're adding the list of plants to the specific field that the user chose from the menu
                     //choice(user input) - farm.NaturalFields.Count (number of natural fields listed) - 1 (bc index starts from 0 not 1)
-                    farm.PlowedFields[choice - 1 - farm.NaturalFields.Count].AddResource(farm, plants);
+                    PlowedField target = farm.PlowedFields[choice - farm.NaturalFields.Count - 1];
+
+                    if (target.MaxCapacity - target.CurrentCapacity >= amountChoice)
+                    {
+                        farm.PlowedFields[choice - 1 - farm.NaturalFields.Count].AddResource(farm, plants);
+                        ChooseSunflowerField.UserTriedToSelectAFullFacility = false;
+                    }
+                    else
+                    {
+                        UserTriedToSelectAFullFacility = true;
+                        ChooseSunflowerField.CollectInput(farm, seedChoice, amountChoice);
+                    }
 
                     //make sure that this variable is set to false, in case user was previous directed
                     PurchaseSeed.ThereIsNoRoomForTheSeedBeingPurchased = false;

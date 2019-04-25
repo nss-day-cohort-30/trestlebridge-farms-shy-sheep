@@ -34,7 +34,7 @@ namespace Trestlebridge.Actions {
                 case 5: farm.AddChickenHouse(new ChickenHouse());
                     break;
                 case 6:
-                    break;
+                break;
                 default:
                     break;
             }

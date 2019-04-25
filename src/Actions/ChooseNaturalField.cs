@@ -45,12 +45,12 @@ namespace Trestlebridge.Actions
                 List<ICompostProducing> plants = new List<ICompostProducing>();
 
                 //determine which type of plant they want and then with for loop adding the appropriate amount(amountChoice parameter) to list of plants
-            
+
                     for (int i = 0; i < amountChoice; i++)
                     {
                         plants.Add(new Wildflower());
                     }
-               
+
 
                 //now we're adding the list of plants to the specific field that the user chose from the menu
                 farm.NaturalFields[choice].AddResource(farm, plants);

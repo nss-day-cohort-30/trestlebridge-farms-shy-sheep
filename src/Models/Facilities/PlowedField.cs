@@ -3,8 +3,10 @@ using System.Text;
 using System.Collections.Generic;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Actions;
+using Trestlebridge.Models.Plants;
 
-namespace Trestlebridge.Models.Facilities {
+namespace Trestlebridge.Models.Facilities
+{
     public class PlowedField : IFacility<ISeedProducing>
     {
         private int _capacity = 13;
@@ -12,28 +14,50 @@ namespace Trestlebridge.Models.Facilities {
 
         private List<ISeedProducing> _plants = new List<ISeedProducing>();
 
-        public double MaxCapacity {
-            get {
+        public double MaxCapacity
+        {
+            get
+            {
                 return _capacity;
             }
         }
 
-        public double CurrentCapacity {
-            get {
+        public double CurrentCapacity
+        {
+            get
+            {
                 return _plants.Count;
             }
         }
 
-        public void AddResource (Farm farm, ISeedProducing plant)
+        public void AddResource(Farm farm, string seedChoice, int amountChoice)
         {
-            if (_plants.Count < _capacity) {
-                _plants.Add(plant);
-                ChoosePlowedField.UserTriedToSelectAFullFacility = true;
+            int emptySpace = _capacity - _plants.Count;
+            if (emptySpace >= amountChoice)
+            {
+
+                if (seedChoice == "Sesame")
+                {
+                    for (int i = 0; i < amountChoice; i++)
+                    {
+                        _plants.Add(new Sesame());
+                    }
+                }
+
+                else if (seedChoice == "Sunflower")
+                {
+
+                    for (int i = 0; i < amountChoice; i++)
+                    {
+                        _plants.Add(new Sunflower());
+                    }
+                }
+
             }
             else
             {
-                ChoosePlowedField.UserTriedToSelectAFullFacility = false;
-                ChoosePlowedField.CollectInput(farm, plant);
+                ChoosePlowedField.UserTriedToSelectAFullFacility = true;
+                ChoosePlowedField.CollectInput(farm, seedChoice, amountChoice);
             }
         }
 

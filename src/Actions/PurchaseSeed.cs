@@ -8,6 +8,7 @@ namespace Trestlebridge.Actions
 {
     public class PurchaseSeed
     {
+        public static bool ThereIsNoRoomForTheSeedBeingPurchased = false;
         public static void CollectInput(Farm farm)
         {
             Console.WriteLine(" 1. Sesame");
@@ -15,6 +16,11 @@ namespace Trestlebridge.Actions
             Console.WriteLine(" 3. Wildflower");
 
             Console.WriteLine();
+               if (ThereIsNoRoomForTheSeedBeingPurchased)
+            {
+                Console.WriteLine("Sorry, but you don't have anywhere to put that seed. Please make a different selection.");
+            }
+
             Console.WriteLine("  Choose seed to purchase");
 
             Console.Write("> ");

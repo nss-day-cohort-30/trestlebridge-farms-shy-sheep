@@ -37,14 +37,8 @@ namespace Trestlebridge.Models.Facilities {
             }
         }
 
-        public void AddResource(Chicken resource)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddResource(List<Chicken> resources)
-        {
-            throw new NotImplementedException();
+        public void AddResource(Farm farm, List<Chicken> animals) {
+            
         }
 
         public override string ToString()

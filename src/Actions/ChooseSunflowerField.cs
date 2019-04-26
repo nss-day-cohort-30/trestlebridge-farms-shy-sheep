@@ -46,14 +46,20 @@ namespace Trestlebridge.Actions
                 for (int i = 0; i < farm.NaturalFields.Count; i++)
                 {
                     NaturalField currentField = farm.NaturalFields[i];
-                    Console.WriteLine($"{i + 1}. Natural field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
+                    if (currentField.MaxCapacity - currentField.CurrentCapacity >= amountChoice)
+                    {
+                        Console.WriteLine($"{i + 1}. Natural field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
+                    }
                 }
 
                 for (int i = 0; i < farm.PlowedFields.Count; i++)
                 {
                     PlowedField currentField = farm.PlowedFields[i];
                     //this allows the plowed fields to be displayed after the available natural fields
-                    Console.WriteLine($"{i + farm.NaturalFields.Count + 1}. Plowed field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
+                    if (currentField.MaxCapacity - currentField.CurrentCapacity >= amountChoice)
+                    {
+                        Console.WriteLine($"{i + farm.NaturalFields.Count + 1}. Plowed field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
+                    }
                 }
 
                 Console.WriteLine();

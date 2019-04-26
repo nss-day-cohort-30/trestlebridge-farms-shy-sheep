@@ -25,7 +25,10 @@ namespace Trestlebridge.Actions
                 for (int i = 0; i < farm.NaturalFields.Count; i++)
                 {
                     NaturalField currentField = farm.NaturalFields[i];
-                    Console.WriteLine($"{i + 1}. Natural field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
+                    if (currentField.MaxCapacity - currentField.CurrentCapacity >= amountChoice)
+                    {
+                        Console.WriteLine($"{i + 1}. Natural field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
+                    }
                 }
 
                 Console.WriteLine();
@@ -46,10 +49,10 @@ namespace Trestlebridge.Actions
 
                 //determine which type of plant they want and then with for loop adding the appropriate amount(amountChoice parameter) to list of plants
 
-                    for (int i = 0; i < amountChoice; i++)
-                    {
-                        plants.Add(new Wildflower());
-                    }
+                for (int i = 0; i < amountChoice; i++)
+                {
+                    plants.Add(new Wildflower());
+                }
 
 
                 //now we're adding the list of plants to the specific field that the user chose from the menu

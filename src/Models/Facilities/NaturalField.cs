@@ -41,10 +41,30 @@ namespace Trestlebridge.Models.Facilities
         public override string ToString()
         {
             StringBuilder output = new StringBuilder();
+            List<string> plantSummary = new List<string>();
+            Dictionary<string, int> totalPlantCounts = new Dictionary<string, int>();
             string shortId = $"{this._id.ToString().Substring(this._id.ToString().Length - 6)}";
 
-            output.Append($"Natural field {shortId} has {this._plants.Count} of {this._capacity} rows of plants.\n");
-            this._plants.ForEach(p => output.Append($"   {p}\n"));
+            _plants.ForEach(plant => {
+                //Type property is inaccessible on plant because it is currently Type ICompostProducing
+                //Cast (change from one type to another) to Type IResource so it becomes available
+                IResource castPlant = (IResource)plant;
+                if (!totalPlantCounts.ContainsKey(castPlant.Type))
+                {
+                    totalPlantCounts[castPlant.Type] = 1;
+                }
+                else
+                {
+                    totalPlantCounts[castPlant.Type] += 1;
+                }
+            });
+
+             foreach (KeyValuePair<string, int> plantCount in totalPlantCounts)
+             {
+                 plantSummary.Add($"{plantCount.Value} {plantCount.Key}");
+             }
+
+            output.Append($"Natural field {shortId} ({String.Join(", ", plantSummary)})\n");
 
             return output.ToString();
         }

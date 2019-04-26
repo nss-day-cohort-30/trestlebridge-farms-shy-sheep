@@ -25,7 +25,10 @@ namespace Trestlebridge.Actions
                 for (int i = 0; i < farm.PlowedFields.Count; i++)
                 {
                     PlowedField currentField = farm.PlowedFields[i];
-                    Console.WriteLine($"{i + 1}. Plowed field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
+                    if (currentField.MaxCapacity - currentField.CurrentCapacity >= amountChoice)
+                    {
+                        Console.WriteLine($"{i + 1}. Plowed field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} rows of plants\n");
+                    }
                 }
 
                 Console.WriteLine();
@@ -45,12 +48,12 @@ namespace Trestlebridge.Actions
                 List<ISeedProducing> plants = new List<ISeedProducing>();
 
                 //determine which type of plant they want and then with for loop adding the appropriate amount(amountChoice parameter) to list of plants
-            
-                    for (int i = 0; i < amountChoice; i++)
-                    {
-                        plants.Add(new Sesame());
-                    }
-               
+
+                for (int i = 0; i < amountChoice; i++)
+                {
+                    plants.Add(new Sesame());
+                }
+
 
                 //now we're adding the list of plants to the specific field that the user chose from the menu
                 farm.PlowedFields[choice].AddResource(farm, plants);

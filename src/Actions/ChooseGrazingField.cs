@@ -22,7 +22,10 @@ namespace Trestlebridge.Actions
                 for (int i = 0; i < farm.GrazingFields.Count; i++)
                 {
                     GrazingField currentField = farm.GrazingFields[i];
-                    Console.WriteLine($"{i + 1}. Grazing field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} animals\n");
+                    if (currentField.CurrentCapacity < currentField.MaxCapacity)
+                    {
+                        Console.WriteLine($"{i + 1}. Grazing field - {currentField.CurrentCapacity} of {currentField.MaxCapacity} animals\n");
+                    }
                 }
 
                 Console.WriteLine();

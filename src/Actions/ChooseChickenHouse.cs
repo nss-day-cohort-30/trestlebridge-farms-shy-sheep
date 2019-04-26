@@ -22,7 +22,10 @@ namespace Trestlebridge.Actions
                 for (int i = 0; i < farm.ChickenHouses.Count; i++)
                 {
                     ChickenHouse currentHouse = farm.ChickenHouses[i];
-                    Console.WriteLine($"{i + 1}. {currentHouse}");
+                    if (currentHouse.CurrentCapacity < currentHouse.MaxCapacity)
+                    {
+                        Console.WriteLine($"{i + 1}. {currentHouse}");
+                    }
                 }
 
                 Console.WriteLine();
